@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { addContact } from 'redux/contactsSlice';
+import { addContactAction } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
+
 import { Input, Button, Label, Form } from './ContactForm.styled';
 
 export function ContactForm() {
@@ -37,10 +38,6 @@ export function ContactForm() {
       elements: { number, name },
     } = evt.target;
 
-    // const values = Object.values(contacts);
-    // const idx = values.length - 1;
-    // values.splice(idx, 1);
-
     const contactsInclude = contacts.some(el => el.name === name.value);
 
     if (contactsInclude) {
@@ -50,7 +47,7 @@ export function ContactForm() {
       return;
     }
 
-    dispatch(addContact(name.value, number.value));
+    dispatch(addContactAction(name.value, number.value));
 
     setContactNumber('');
     setContactName('');

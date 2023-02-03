@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFilter } from 'redux/filterSlice';
+import { contactsSearchAction } from 'redux/contactsSlice';
 import { getFilter } from 'redux/selectors';
 
 import { Box } from '../Box';
@@ -11,8 +11,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
 
   const changeFilter = evt => {
-    console.log(evt.target.value);
-    dispatch(setFilter(evt.target.value));
+    dispatch(contactsSearchAction(evt.target.value));
   };
 
   return (
